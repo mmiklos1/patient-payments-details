@@ -150,6 +150,9 @@ Basic architecture for a public-facing online patient payment system.
 - **Disputes**  
   For disputes, the money is removed from the practice while the dispute is in place. The webhook will receive this; charges should be updated to "Disputed" (or the PMS equivalent). Since the money is gone while the charge is in dispute, we'd typically show the patient that they owe those charges again. Does the PMS have a way to indicate open disputes? Is there any desire to show a charge as in dispute in the patient payment UI, given we don't allow payment by line item?
 
+- **Email receipt option**  
+  Which approach should we use for sending the receipt by email? **(1)** No attachment — API Gateway → SES with template; body only, optionally link back to transaction (no PDF attachment). **(2)** Third-party mailer — UI → API → Mailhog, Mailchimp, or similar; API builds and sends with configured sender. **(3)** With PDF attachment — UI → API → Lambda (build MIME + attach PDF) → SES; offloads heavy work from API but adds Lambda. Decision will drive TL;DR checklist (SES vs third-party vs Lambda+SES).
+
 ---
 
 ## TL;DR — Build checklist (repos, services, infrastructure)
