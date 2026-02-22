@@ -152,18 +152,6 @@ Basic architecture for a public-facing online patient payment system.
 
 ---
 
-## 6. Completeness analysis
-
-| Section | Completeness | Notes |
-|--------|--------------|--------|
-| **UI** | Strong | Rate limiting and error states are covered in the flowchart. Accessibility is a given. |
-| **API** | Good | EMR endpoints added in brief; majority of contract in place. Idempotency not required (payment handled by 3rd party). Reconciliation (e.g. hook failure after provider success) out of scope for this doc. |
-| **Metrics** | Good | **No PII/PCI in logs.** Logging for error handling will be added to track failures. |
-
-Use this table to plug remaining gaps before or while building the flowchart.
-
----
-
 ## TL;DR — Build checklist (repos, services, infrastructure)
 
 Physical things to create before or while building. Not code-level tasks; use this to spin up repos, services, and infra.
